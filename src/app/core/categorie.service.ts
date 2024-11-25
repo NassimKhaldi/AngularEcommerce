@@ -1,14 +1,10 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Categorie } from '../models/categorie';
-import { ShortList } from '../models/short-list.model';
-import { CardComponent } from '../card/card.component';
 
-@Component({
-  selector: 'app-list-categories-component',
-  templateUrl: './list-categories-component.component.html',
-  styleUrls: ['./list-categories-component.component.css'],
+@Injectable({
+  providedIn: 'root',
 })
-export class ListCategoriesComponentComponent {
+export class CategorieService {
   categories: Categorie[] = [
     {
       id: 1,
@@ -53,34 +49,16 @@ export class ListCategoriesComponentComponent {
       available: false,
     },
   ];
-  title: string = '';
-  test(x: string) {
-    alert(x);
+  getCategories(){
+    return this.categories;
   }
-  shortList: ShortList[] = [];
-
-  @ViewChildren(CardComponent) children!: QueryList<CardComponent>;
-
-  ngAfterViewInit() {
-    this.children.forEach((child) => {
-      child.btnText = 'Voir produits';
-    });
+  getCategoryById(id:number){
+    return this.categories.find((c)=> c.id==id);
   }
-
-  addToShortList(category: ShortList) {
-    let exist: boolean = false;
-    for (let c of this.shortList) {
-      if (c.idElement == category.idElement && c.idUser == category.idUser) {
-        exist = true;
-      }
-      break;
-    }
-    if (exist) {
-      alert('Category already a favorite');
-    } else {
-      category.typeElement = 'category';
-      this.shortList.push(category);
-      console.log(this.shortList);
-    }
+  addCategory(c: Categorie){
+    this.categories.push(c)  
+  }
+  deleteCategory(){
+    this.categories.reduce()
   }
 }

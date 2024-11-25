@@ -1,0 +1,103 @@
+<h2>Ajouter un produit</h2>
+<form #addProduct="ngForm" novalidate>
+  <!-- Name Field -->
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      ngModel
+      #name="ngModel"
+      required
+      minlength="5"
+      pattern="[a-zA-Z]*"
+      class="form-control"
+    />
+    <div *ngIf="name.invalid && name.touched" class="text-danger">
+      <small *ngIf="name.errors?.['required']">Name is required.</small>
+      <small *ngIf="name.errors?.['minlength']"
+        >Name must be at least 5 characters long.</small
+      >
+      <small *ngIf="name.errors?.['pattern']"
+        >Name must contain only letters.</small
+      >
+    </div>
+  </div>
+
+  <!-- Image Field -->
+  <div class="mb-3">
+    <label for="img" class="form-label">Image</label>
+    <input
+      type="text"
+      id="img"
+      name="img"
+      ngModel
+      #img="ngModel"
+      class="form-control"
+    />
+  </div>
+
+  <!-- Category Field -->
+  <div class="mb-3">
+    <label for="categorie" class="form-label">Category</label>
+    <select
+      id="categorie"
+      name="categoryId"
+      ngModel
+      #categorie="ngModel"
+      required
+      class="form-control"
+    >
+      <option [value]="1">Category 1</option>
+      <option [value]="2">Category 2</option>
+      <option [value]="3">Category 3</option>
+    </select>
+    <div *ngIf="categorie.invalid && categorie.touched" class="text-danger">
+      <small>Category is required.</small>
+    </div>
+  </div>
+
+  <!-- Price Field -->
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input
+      type="text"
+      id="price"
+      name="price"
+      ngModel
+      #price="ngModel"
+      required
+      pattern="^\\d+(\\.\\d+)?$"
+      class="form-control"
+    />
+    <div *ngIf="price.invalid && price.touched" class="text-danger">
+      <small *ngIf="price.errors?.['required']">Price is required.</small>
+      <small *ngIf="price.errors?.['pattern']"
+        >Price must be a valid number.</small
+      >
+    </div>
+  </div>
+
+  <!-- Promotion Field -->
+  <div class="mb-3">
+    <label for="promotion" class="form-label">Promotion</label>
+    <input
+      type="text"
+      id="promotion"
+      name="promotion"
+      ngModel
+      #promotion="ngModel"
+      required
+      maxlength="100"
+      pattern="^(0|[1-9][0-9]?)$"
+      class="form-control"
+    />
+    <div *ngIf="promotion.invalid && promotion.touched" class="text-danger">
+      <small>Promotion must be a number between 0 and 100.</small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="addProduct.invalid">
+    Save
+  </button>
+</form>

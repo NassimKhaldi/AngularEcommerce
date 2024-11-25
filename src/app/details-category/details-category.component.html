@@ -1,0 +1,14 @@
+<h2>DETAIL CATEGORIES</h2>
+
+<div *ngIf="cat">
+  <h3>{{ cat.id }}</h3>
+  <img [src]="cat.image" alt="{{ cat.title }}" />
+  <p>{{ cat.description }}</p>
+  <p *ngIf="cat.available; else notAvailable">Disponible</p>
+  <ng-template #notAvailable>
+    <p>Indisponible</p>
+  </ng-template>
+</div>
+<div *ngIf="!cat">
+  <p>Catégorie non trouvée</p>
+</div>

@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <app-card
+      class="col-md-4"
+      style="margin-bottom: 20px"
+      *ngFor="let prod of listProducts"
+      [id]="prod.id"
+      [title]="prod.title"
+      [image]="prod.image"
+      [quantity]="prod.quantity"
+      [btnText]="prod.description"
+      (shortedList)="addToShortList($event)"
+    ></app-card>
+  </div>
+</div>

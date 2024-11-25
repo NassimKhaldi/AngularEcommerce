@@ -7,12 +7,18 @@ import { HeaderComponentComponent } from './header-component/header-component.co
 import { FooterComponentComponent } from './footer-component/footer-component.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { ListCategoriesComponentComponent } from './list-categories-component/list-categories-component.component';
-import { ProductsComponentComponent } from './ProductModule/products-component/products-component.component';
-import { ProfileComponentComponent } from './ProfileModule/profile-component/profile-component.component';
-import { ContactComponentComponent } from './ContactModule/contact-component/contact-component.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContainsPipe } from './contains.pipe';
 import { HighlightDirective } from './highlight.directive';
+import { DetailsCategoryComponent } from './details-category/details-category.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductsCategoryComponentComponent } from './products-category-component/products-category-component.component';
+import { AddcategComponent } from './addcateg/addcateg.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
+import { AddReactiveFormComponent } from './product/add-reactive-form/add-reactive-form.component';
+import { CvComponent } from './cv/cv.component';
+import { CardComponent } from './card/card.component';
+import { ListProductsComponent } from './list-products/list-products.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +27,19 @@ import { HighlightDirective } from './highlight.directive';
     FooterComponentComponent,
     HomeComponentComponent,
     ListCategoriesComponentComponent,
-    ProductsComponentComponent,
-    ProfileComponentComponent,
-    ContactComponentComponent,
     ContainsPipe,
     HighlightDirective,
+    DetailsCategoryComponent,
+    NotFoundComponent,
+    ProductsCategoryComponentComponent,
+    AddcategComponent,
+    AddProductComponent,
+    AddReactiveFormComponent,
+    CvComponent,
+    CardComponent,
+    ListProductsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

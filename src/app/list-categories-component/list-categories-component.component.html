@@ -11,22 +11,59 @@
 
 <div class="container">
   <div class="row">
-    <ng-container *ngFor="let cat of categories | contains : titleInput.value">
-      <div class="col-md-4" style="margin-bottom: 20px">
-        <img
-          [src]="cat.image"
-          alt="{{ cat.title }}"
-          class="img-fluid h-50 w-75"
-          (click)="test(cat.description)"
-        />
-        <h3>{{ cat.title | uppercase }}</h3>
-        <button *ngIf="cat.available; else alt" class="btn btn-primary">
-          Voir produit
-        </button>
-        <ng-template #alt>
-          <p style="color: red">Catégorie non disponible</p>
-        </ng-template>
-      </div>
-    </ng-container>
+    <app-card
+      class="col-md-4"
+      style="margin-bottom: 20px"
+      *ngFor="let cat of categories | contains : titleInput.value"
+      [id]="cat.id"
+      [title]="cat.title"
+      [image]="cat.image"
+      [description]="cat.description"
+      [available]="cat.available"
+      (shortedList)="addToShortList($event)"
+    ></app-card>
   </div>
 </div>
+<app-list-products></app-list-products>
+
+<!--
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    id="find"
+    placeholder="Titre catégorie"
+    [(ngModel)]="title"
+    #titleInput="ngModel"
+  />
+</div>
+
+<div class="container">
+  <div class="row">
+    <div
+      class="col-md-4"
+      style="margin-bottom: 20px"
+      appHighlight
+      *ngFor="let cat of categories | contains : titleInput.value"
+    >
+      <img
+        [src]="cat.image"
+        alt="{{ cat.title }}"
+        class="img-fluid h-50 w-75"
+        (click)="test(cat.description)"
+      />
+      <h3>{{ cat.title | uppercase }}</h3>
+      <button
+        *ngIf="cat.available; else alt"
+        class="btn btn-primary"
+        [routerLink]="['/ProductCategory', cat.id]"
+      >
+        Voir produit
+      </button>
+      <a [routerLink]="['/detailsCategory', cat.id]"> more details.. </a>
+      <ng-template #alt>
+        <p style="color: red">Catégorie non disponible</p>
+      </ng-template>
+    </div>
+  </div>
+</div> -->

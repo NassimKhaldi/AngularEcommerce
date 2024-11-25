@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let prod of listProducts">
+      <div class="card mb-4 shadow-sm">
+        <img [src]="prod.image" class="card-img-top" alt="{{ prod.name }}" style="height: 250px; object-fit: cover;">
+        
+        <div class="card-body">
+          <h5 class="card-title">{{ prod.name }}</h5>
+          <p class="card-text">Marque: {{ prod.brand }}</p>
+          <p class="card-text">Prix: {{ prod.price | currency:'EUR' }}</p>
+          <a [routerLink]="['/product', prod.id]" class="btn btn-primary">Voir Détails</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<form
+  [formGroup]="addFormCv"
+  (ngSubmit)="onSubmit()"
+  class="p-4 border rounded shadow-sm bg-light"
+>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      formControlName="name"
+      id="name"
+      class="form-control"
+      placeholder="Name"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      formControlName="Email"
+      id="email"
+      type="email"
+      class="form-control"
+      placeholder="Email"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      formControlName="Password"
+      id="password"
+      type="password"
+      class="form-control"
+      placeholder="Password"
+    />
+  </div>
+
+  <div formGroupName="Adresse" class="mb-3 p-3 border rounded">
+    <h5>Address</h5>
+    <div class="mb-3">
+      <label for="city" class="form-label">City</label>
+      <input
+        formControlName="city"
+        id="city"
+        class="form-control"
+        placeholder="City"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="postalCode" class="form-label">Postal Code</label>
+      <input
+        formControlName="PostalCode"
+        id="postalCode"
+        class="form-control"
+        placeholder="Postal Code"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="town" class="form-label">Town</label>
+      <input
+        formControlName="Town"
+        id="town"
+        class="form-control"
+        placeholder="Town"
+      />
+    </div>
+  </div>
+
+  <div formArrayName="skills" class="mb-3">
+    <h5>Skills</h5>
+    <div
+      *ngFor="let skill of skills.controls; let i = index"
+      class="input-group mb-2"
+    >
+      <input [formControlName]="i" class="form-control" placeholder="Skill" />
+      <button type="button" class="btn btn-danger" (click)="removeSkill(i)">
+        Remove
+      </button>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary mb-3" (click)="addSkill()">
+    Add Skill
+  </button>
+  <button type="submit" class="btn btn-success" [disabled]="addFormCv.invalid">
+    Submit
+  </button>
+</form>

@@ -1,0 +1,79 @@
+<h2>Ajouter un produit</h2>
+<form [formGroup]="addForm">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      class="form-control"
+    />
+    <small *ngIf="addForm.get('name')?.errors?.['required']">Name is required.</small>
+    <small *ngIf="addForm.get('name')?.errors?.['minlength']">Name must be at least 5 characters long.</small>
+    <small *ngIf="addForm.get('name')?.errors?.['pattern']">Name must contain only letters.</small>
+  </div>
+  
+  <div class="mb-3">
+    <label for="image" class="form-label">Image</label>
+    <input
+      type="text"
+      id="image"
+      formControlName="image"
+      class="form-control"
+    />
+  </div>
+  
+  <div class="mb-3">
+    <label for="categoryId" class="form-label">Category</label>
+    <select
+      id="categoryId"
+      formControlName="categoryId"
+      class="form-control"
+    >
+      <option [value]="1">Category 1</option>
+      <option [value]="2">Category 2</option>
+      <option [value]="3">Category 3</option>
+    </select>
+  </div>
+  
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea
+      id="description"
+      formControlName="description"
+      class="form-control"
+    ></textarea>
+  </div>
+  
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input
+      type="text"
+      id="price"
+      formControlName="price"
+      class="form-control"
+    />
+  </div>
+  
+  <div class="mb-3">
+    <label for="brand" class="form-label">Brand</label>
+    <input
+      type="text"
+      id="brand"
+      formControlName="brand"
+      class="form-control"
+    />
+  </div>
+  
+  <div class="mb-3">
+    <label for="promotion" class="form-label">Promotion</label>
+    <input
+      type="text"
+      id="promotion"
+      formControlName="promotion"
+      class="form-control"
+    />
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
