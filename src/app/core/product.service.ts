@@ -61,6 +61,23 @@ export class ProductService {
       categoryId: 5,
     },
   ];
+  getProducts(){
+    return this.listProducts;
+  }
+  getProductById(id:number){
+    return this.listProducts.find((c)=> c.id==id);
+  }
+  addProduct(p: Product2){
+    this.listProducts.push(p);  
+  }
+  updateProduct(p: Product2){
+    let index = this.listProducts.findIndex((p)=>p.id);
+    this.listProducts[index]= p;
+  }
+  deleteProduct(id:number){
+    let index = this.listProducts.findIndex((p)=>p.id==id);
+    this.listProducts.splice(index,1);
+  }
   getProductsByCategory(id:number){
     return this.listProducts.findIndex((p)=>p.id)
   }

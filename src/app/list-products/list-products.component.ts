@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Product2 } from '../models/product2';
 import { ShortList } from '../models/short-list.model';
+import { ProductService } from '../core/product.service';
 
 @Component({
   selector: 'app-list-products',
@@ -64,6 +65,8 @@ export class ListProductsComponent {
       categoryId: 5,
     },
   ];
+  private ProductService = inject(ProductService);
+  Products = this.ProductService.getProducts;
   shortList: ShortList[] = [];
   addToShortList(category: ShortList) {
     let exist: boolean = false;

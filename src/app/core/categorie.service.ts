@@ -56,9 +56,14 @@ export class CategorieService {
     return this.categories.find((c)=> c.id==id);
   }
   addCategory(c: Categorie){
-    this.categories.push(c)  
+    this.categories.push(c);  
   }
-  deleteCategory(){
-    this.categories.reduce()
+  updateCategory(c: Categorie){
+    let index = this.categories.findIndex((c)=>c.id);
+    this.categories[index]=c;
+  }
+  deleteCategory(id:number){
+    let index = this.categories.findIndex((c)=>c.id==id);
+    this.categories.splice(index,1);
   }
 }
